@@ -1,3 +1,16 @@
+; Implementar el siguiente código C en MIPS
+;       …
+;      sum = 0;
+;        i = inicio;
+;        f = fin;
+;        while(i<=f)
+;        {
+;       sum = sum + i;
+;        i++;
+;        }
+;        res = sum;
+;        …
+
 .data
 	inicio:   	.byte 9      ; i = inicio, con valor 9
 	fin: 		.byte 16     ; f = fin, con valor 16
@@ -20,4 +33,4 @@ bucle: slt $7, $6, $5          ; Si fin ($6) > inicio ($5), entonces carga un 1 
        
        j bucle                ; Salto incondicional a bucle
        
-final: sb $4, 0($8)           ; Store del resultado ($8 = sum) en $4 (res)                
+final: sb $4, 0($8)           ; Store del resultado ($8 = sum) en $4 (res)       

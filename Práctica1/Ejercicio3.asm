@@ -1,23 +1,21 @@
+;  Implementar el siguiente código C en MIPS
+;        …
+;        aux = 0;
+;        for(i=0; i<8; i++)
+;        {
+;        	aux = aux + x[i];
+;       }
+;        aux = aux/8;
+;        res = aux;
+;       …
+
 .data
-	inicio:   	.byte 9      ; i = inicio, con valor 9
-	fin: 		.byte 16     ; f = fin, con valor 16
-	res:         .space 2     ; Espacio reservado para “res” de 2 bytes
+	x:      	.word 6, -4, 13, 8, -2, 11, 7, 20, 9, -3, -12, 5, 1, 23, -25, 8
+	contP:		.space 4	; Debería contener el resultado final de 11
+	contN:    	.space 4	; Debería contener el resultado final de 5
 
 .text
-	la $2, inicio            ; Carga la dirección de memoria de la variable “inicio”
-	la $3, fin               ; Carga la dirección de memoria de la variable “fin”
-	la $4, res               ; Carga la dirección de “res” (donde se almacenará el resultado)
-
-       lb $5, 0($2)            ; Carga sin desplazamiento de $2,esto es, $5 es inicio = i
-       lb $6, 0($3)            ; Carga sin desplazamiento de $3,esto es, $6 es fin = f
-       
-bucle: slt $7, $6, $5          ; Si fin ($6) > inicio ($5), entonces carga un 1 en $7, de lo contrario, un 0
-       
-       bne $7, $0, final      ; Si en $7 se cargó un 0 (fin < inicio), saltamos a final, de lo contrario continua
-       
-       add $8, $7, $5         ; Sumamos y guardamos en $8. En $7 ya hay un cero si acabamos de entrar por primera vez, $7 sería sum
-       addi $5, $5, 1         ; Suma inmediata a $5 + 1 donde 
-       
-       j bucle                ; Salto incondicional a bucle
-       
-final: sb $4, 0($8)           ; Store del resultado ($8 = sum) en $4 (res)                
+	la $2, x        	; Dirección inicial del vector (y, por tanto, del primer elemento)
+	addi $3, $0, 0	; Inicialización de registro a 0 (para contador de positivos)
+	addi $4, $0, 0	; Inicialización de registro a 0 (para contador de negativos)
+                

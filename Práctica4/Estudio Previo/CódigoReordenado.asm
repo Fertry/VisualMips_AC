@@ -5,10 +5,10 @@
     
 .data
 
-
 .text
-
-     li $10, 0x10000100 ; dir. inicial de “x”
+     ;li $10, 0x10000100 dir. inicial de “x”, se traduce en:
+     lui $10, 0x1000
+     ori $10, $10, 0x0100
      addi $20, $10, 40 ; dir. inicial de “y”
      addi $30, $20, 40 ; dir. inicial de “z”
      addi $5, $30, 40 ; final de “z"
@@ -21,5 +21,5 @@
      addi $20, $20, 4
      mul $2, $2, $25
      addi $10, $10, 4
-     sw $2, 0($30)
+     sw $2, -4($30)
      bne $30, $5, for

@@ -6,7 +6,6 @@
 .data
 
 .text
-
     addi $3, $0, 3
     addi $2, $0, 36
     addi $10, $0, 0

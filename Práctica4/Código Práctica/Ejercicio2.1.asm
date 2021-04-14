@@ -6,7 +6,6 @@
 .data
 
 .text
-
     addi $10, $10, 0
     addi $20, $10, 80
     addi $30, $20, 156

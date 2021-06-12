@@ -1,0 +1,21 @@
+;Programa muy sencillo que suma dos números
+;Los números se leen de memoria, en las posiciones N1 y N2
+;El resultado de la suma se guarda en la posicion RES
+
+	org 0x0000
+	ent comienzo
+
+n1:	dw 37   ;el primer número.
+n2:	dw 27   ;el segundo número.
+res:	ds 1    ;aquí estará el resultado.
+
+comienzo:	movh r0,hi(n1)
+		movl r0,lo(n1)  ;R0=posición de N1
+		movh r1,hi(n2)
+		movl r1,lo(n2)  ;R1=posición de N2
+		mov r2,[r0]     ;R2=primer número
+		mov r3,[r1]     ;R3=segundo número
+		add r4,r2,r3    ;R4=N1+N2
+		movh r5,hi(res)
+		movl r5,lo(res) ;R5=posición de RES
+		mov [r5],r4     ;RES=R4
